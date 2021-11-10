@@ -59,6 +59,10 @@ int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 
 int main() {
 	std::cout << nth_prime(367,186,151) << std::endl;
-
+	std::cout << nth_prime(179,10,203) << std::endl;
+	std::cout << nth_prime(271,37,39) << std::endl;
+	std::cout << nth_prime(103,230,1) << std::endl;
+	std::cout << nth_prime(27,104,185) << std::endl;
+	std::cout << nth_prime(253,50,85) << std::endl;
 	return 0;
 }
