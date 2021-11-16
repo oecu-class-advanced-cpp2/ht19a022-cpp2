@@ -64,5 +64,6 @@ int main() {
 	std::cout << nth_prime(103,230,1) << std::endl;
 	std::cout << nth_prime(27,104,185) << std::endl;
 	std::cout << nth_prime(253,50,85) << std::endl;
+
 	return 0;
 }
