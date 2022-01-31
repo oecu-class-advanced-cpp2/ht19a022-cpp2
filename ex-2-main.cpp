@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <string>
 
 namespace cpp2 {
@@ -80,17 +81,13 @@ namespace cpp2 {
 
 bool cpp2::mcxi::str_check(const std::string str) {
 
-	/* 
+	/*
 	* 	TODO : mcxi が2回以上出現してないか調べる
 	*	TODO : mcxi が正しい順番か調べる
 	*	TODO : 規定外の文字・数字セットが使用されてないか調べる
 	*/
-
-	const char mcxi_set[] = { 'm','c','x','i' };
-	const char num_set[] = { '2','3','4','5','6','7','8','9' };
-
-	const int CNT_1 = sizeof(mcxi_set) / sizeof(mcxi_set[0]);
-	const int CNT_2 = sizeof(num_set) / sizeof(num_set[0]);
+	const std::vector<char> mcxi_set = { 'm','c','x','i' };
+	const std::vector<char> num_set = { '2','3','4','5','6','7','8','9' };
 
 	char m_cnt = 0, c_cnt = 0, x_cnt = 0, i_cnt = 0;
 	for (int i = 0; i < str.size(); i++) {
@@ -101,18 +98,25 @@ bool cpp2::mcxi::str_check(const std::string str) {
 	}
 	if (m_cnt > 1 || c_cnt > 1 || x_cnt > 1 || i_cnt > 1) return false;
 
-	const int m_p = str.find('m'),
-			  c_p = str.find('c'),
-			  x_p = str.find('x'),
-			  i_p = str.find('i');
 
-	if (i_p > x_p) {
-		if (c_p >= m_p) {
-			;
-		}
-		else return false;
-	}
+	int m_p = str.find('m') + 1, 
+		c_p = str.find('c') + 1, 
+		x_p = str.find('x') + 1, 
+		i_p = str.find('i') + 1; 
+
+
+	if (c_p == 0)c_p = m_p;
+	if (x_p == 0)x_p = c_p;
+	if (i_p == 0)i_p = x_p;
+
+	std::cout << m_p << std::endl;
+	std::cout << c_p << std::endl;
+	std::cout << x_p << std::endl;
+	std::cout << i_p << std::endl;
+			  
+	if ((i_p >= x_p) && (x_p >= c_p) && (c_p >= m_p)) { ; }
 	else return false;
+			
 
 	for (int i = 0; i < str.size(); i++) {
 
